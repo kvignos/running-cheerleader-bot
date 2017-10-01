@@ -1,7 +1,7 @@
 {
-  "name": "twitter-bot-bootstrap",
+  "name": "running-cheerleader-bot",
   "version": "0.2.1",
-  "description": "A bootstrap for a twitter bot!",
+  "description": "[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://opensource.org/licenses/MIT)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -17,95 +17,23 @@
     "type": "git",
     "url": "git+https://github.com/spences10/twitter-bot-bootstrap.git"
   },
-  "keywords": [ "twitter", "bot", "bootstrap" ],
+  "keywords": [
+    "twitter",
+    "bot",
+    "bootstrap"
+  ],
   "author": "Scott Spence <spences10apps@gmail.com> (https://blog.scottspence.me/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/spences10/twitter-bot-bootstrap/issues"
   },
   "homepage": "https://github.com/spences10/twitter-bot-bootstrap#readme",
-  "devDependencies": {
-    "contributor": "0.1.25"
-  },
+  "devDependencies": {},
   "dependencies": {
     "dotenv": "4.0.0",
-    "snyk": "1.40.2",
+    "snyk": "^1.40.4",
     "twit": "2.2.9",
     "unique-random-array": "1.0.0"
   },
-  "snyk": true,
-  "contributors": [
-    {
-      "name": "Will Hurley",
-      "email": null,
-      "url": "https://github.com/wjhurley",
-      "contributions": 9,
-      "additions": 66,
-      "deletions": 66,
-      "hireable": true
-    },
-    {
-      "name": "Joshua Vaage",
-      "email": null,
-      "url": "https://github.com/whaleen",
-      "contributions": 1,
-      "additions": 1,
-      "deletions": 0,
-      "hireable": true
-    },
-    {
-      "name": "Snyk bot",
-      "email": null,
-      "url": "https://github.com/snyk-bot",
-      "contributions": 1,
-      "additions": 19,
-      "deletions": 3,
-      "hireable": null
-    },
-    {
-      "name": "Jade Thornton",
-      "email": null,
-      "url": "https://github.com/Raindeer44",
-      "contributions": 1,
-      "additions": 1,
-      "deletions": 2,
-      "hireable": true
-    },
-    {
-      "name": "Scott Spence",
-      "email": null,
-      "url": "https://github.com/spences10",
-      "contributions": 121,
-      "additions": 16209,
-      "deletions": 11605,
-      "hireable": true
-    },
-    {
-      "name": "Sergio Ruiz",
-      "email": null,
-      "url": "https://github.com/serginator",
-      "contributions": 3,
-      "additions": 22,
-      "deletions": 4,
-      "hireable": null
-    },
-    {
-      "name": "Paul Abrams",
-      "email": null,
-      "url": "https://github.com/pabrams",
-      "contributions": 1,
-      "additions": 3,
-      "deletions": 3,
-      "hireable": null
-    },
-    {
-      "name": "Millan Sanchez",
-      "email": null,
-      "url": "https://github.com/masdc",
-      "contributions": 2,
-      "additions": 5,
-      "deletions": 2,
-      "hireable": null
-    }
-  ]
+  "snyk": true
 }
