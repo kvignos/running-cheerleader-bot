@@ -6,13 +6,16 @@ const config = require('./config')
 
 const bot = new Twit(config.twitterKeys)
 
-const retweet = require('./api/retweet')
-const reply = require('./api/reply')
+const updateRegisteredUsers = require('./api/updateRegisteredUsers')
+const queryRegisteredUsers = require('./api/queryRegisteredUsers')
 
 // retweet on keywords
-retweet()
-setInterval(retweet, config.twitterConfig.retweet)
+setInterval(queryRegisteredUsers, config.twitterConfig.retweet)
 
 // reply to new follower
-const userStream = bot.stream('user')
-userStream.on('follow', reply)
+//const userStream = bot.stream('user')
+//userStream.on('follow', reply)
+
+// save registered users
+const registeredUsers = bot.stream('statuses/filter', { track: 'cheer me on runcheerleader, opt me out runcheerleader'})
+registeredUsers.on('tweet', updateRegisteredUsers)
