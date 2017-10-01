@@ -1,3 +1,20 @@
+🏃🏃‍♀️🏃🏃🏻‍♀️🏃🏼🏃🏽‍♀️🏃🏿🏃🏿‍♀️🏃🏻🏃‍♀️
+
+Running Cheerleader Bot will encourage you to get out on those runs by celebrating your run with a random, inspiring song lyric retweet.
+
+To register, tweet as follows: 
+Cheer me on @RunCheerleader
+
+To opt out, tweet as follows:
+Opt me out @RunCheerleader
+
+@RunCheerleader looks for tweets of runs with Strava, Runkeeper, and Runmeter.
+
+🏃🏃‍♀️🏃🏃🏻‍♀️🏃🏼🏃🏽‍♀️🏃🏿🏃🏿‍♀️🏃🏻🏃‍♀️
+
+
+
+
 # Twitter bot bootstrap
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/spences10/twitter-bot-bootstrap.svg)](https://greenkeeper.io/) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](http://opensource.org/licenses/MIT) [![Chat](https://badges.gitter.im/awesome-twitter-bots/Lobby.svg)][gitter-url]
