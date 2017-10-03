@@ -1,26 +1,21 @@
 const Twit = require('twit')
-const unique = require('unique-random-array')
+
 const config = require('../config')
+const getRandomSongLyric = require('./getRandomSongLyric')
 
 const param = config.twitterConfig
-const queryStringArray = ['strava run','completed run runkeeper']
-//const queryString = unique(queryStringArray)
-const queryString = 'strava run'
+const keywords = 'runmeter distance'
+
+const yesterdayDate = new Date()
+yesterdayDate.setDate(yesterdayDate.getDate()-1)
+const yesterdayString = yesterdayDate.getFullYear() + '-' + ( yesterdayDate.getMonth() + 1 ) + '-' + yesterdayDate.getDate() 
 
 const bot = new Twit(config.twitterKeys)
 
 const retweet = (screenName) => {
-  //console.log(screenName)
   if (screenName) {
-    //const query = 'from:' + screenName + ' ' + queryString
-    // {"statuses":[],"search_metadata":{"completed_in":0.06,"max_id":912063934668173300,"max_id_str":"912063934668173313","query":"from%3AIdRatherRun+strava+run+filter%3Asafe","refresh_url":"?since_id=912063934668173313&q=from%3AIdRatherRun%20strava%20run%20filter%3Asafe&lang=en&result_type=mixed&include_entities=1","count":2,"since_id":0,"since_id_str":"0"}}
-    
-    // tweet url https://twitter.com/chierotti/status/912063253722931200
-    // this url for the tweet is data.statuses[0].entities.media[0].url
-    // maybe create a new tweet with the song lyric and paste in this tweet url? 
-    // yes, that kicks off a notification, so good enough?
-    const query = "strava run"
-    //console.log(query)
+    // construct the search query with the specific user handle, search keywords, since yesterday.
+    const query = 'from:'+ screenName + ' ' + keywords + ' since:' + yesterdayString
     bot.get(
       'search/tweets',
       {
@@ -33,29 +28,25 @@ const retweet = (screenName) => {
       (err, data, response) => {
         if (err) {
           console.log('ERRORDERP: Cannot Search Tweet!, Description here: ', err)
-        } else {
-          let retweetId
-          try {
-            // retweet the first one
-            console.log(JSON.stringify(data))
-            retweetId = data.statuses[0].id_str
-          } catch (e) {
-            console.log('ERRORDERP: Cannot assign retweetID; exception message: ' + e.message);
-            return
-          }
-  // TODO: add a conditional to only post if there's a retweetId.
-          bot.post(
-            'statuses/retweet/:id',
-            {
-              id: retweetId
-            },
-            (err, response) => {
-              if (err) {
-                console.log('ERRORDERP: Retweet!')
+        } else {     
+          // if we have a match on our search, at least 1 status will be returned
+          if (data.statuses.length > 0) {
+            // create a tweet by getting a random song lyric and adding the retweet url
+            const retweetUrl = 'https://twitter.com/' + screenName + '/status/' + data.statuses[0].id_str
+            const statusText = getRandomSongLyric() + ' ' + retweetUrl          
+            bot.post(
+              'statuses/update', 
+              { 
+                status: statusText      
+              }, 
+              (err, response) => {
+                if (err) {
+                  console.log('ERRORDERP: Retweet!')
+                }              
+                console.log('SUCCESS: RT: ', data.statuses[0].text)
               }
-              console.log('SUCCESS: RT: ', data.statuses[0].text)
-            }
-          )
+            )
+          }
         }
       }
     )
